@@ -1,34 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form>
-        <input type ="text" name=""email />
-        <input type=" password" name="password">
-    </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotisong-Music Ranking App</title>
+    <link rel="stylesheey" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Emotisong</span>
+      </div>
+    </nav>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Emotisong<br>Discover Music That Will Boost Your Algorithm with Our Song Rating App!</h5>
+              <p class="card-text">
+                Emotisong is a music rating app that allows users to rate songs on a scale of 1-5 based on their personal preferences. Whether you love a song or find it unbearable, RateMySong provides a platform for you to share your opinion with the world. With a sleek and user-friendly interface, you can easily search for your favorite songs and rate them with just a few taps. </p>
 
-    <script>
-        function submitSignup(){
-            const query = await fetch("/api/user/signup", {
-                method: "POST",
-                body: JSON.stringify({
-                    email: email,
-                    password: password
-                }),
-                headers: {
-                    "Content-Type": "application.json"
-                }
-            })
-            const result = await query.json()
-            if ( result.status === "succeess"{
-                //....
-            })
-        
-        }
-    </script>
-</body>
+                <p>But that’s not all! Our app also helps influencers and retailers find songs to use on social media posts to boost their algorithm. With our advanced search filters, you can find songs that match your brand’s vibe and style, and create content that resonates with your audience.</p> 
+
+                <p> You can also browse through other users’ ratings and discover new music that matches your taste. So, what are you waiting for? Signup for Emotisong today and start rating your favorite tunes! 🎶</p>
+                
+                <p>So whether you’re a music lover looking for your next favorite song, or an influencer or retailer looking to boost your social media presence, our Song Rating App has got you covered.</p>
+                
+            </div>
+            <img src="./images/c-d-x-PDX_a_82obo-unsplash.jpg" class="card-img-bottom" alt="..." />
+          </div>
+        </div>
+        <div class="col">
+          <form>
+            <input type="text" name="email" />
+            <input type=" password" name="password" />
+          </form>
+
+          <script>
+            function submitSignup(){
+                const query = await fetch("/api/user/signup", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    }),
+                    headers: {
+                        "Content-Type": "application.json"
+                    }
+                })
+                const result = await query.json()
+                if ( result.status === "succeess"{
+                    //....
+                })
+
+            };
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
