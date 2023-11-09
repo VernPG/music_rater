@@ -1,0 +1,8 @@
+DROP DATABASE IF EXISTS music_rater_db;
+CREATE DATABASE music_rater_db;
+
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(30) NOT NULL,
+  password VARCHAR(30) NOT NULL,
+);
