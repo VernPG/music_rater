@@ -13,7 +13,7 @@ Rating.init(
       autoIncrement: true,
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     songs_id: {
