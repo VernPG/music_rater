@@ -1,11 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotisong-Music Ranking App</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atomic+Age&family=Cormorant&family=Manrope&family=Monoton&family=Righteous&family=Spectral:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: url("./images/belinda-fewings-68HrHtqdiPE-unsplash.jpg");
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar bg-body-tertiary"
+      style="
+        background: linear-gradient(
+          90deg,
+          rgba(134, 93, 52, 1) 21%,
+          rgba(47, 118, 147, 1) 52%,
+          rgba(40, 107, 135, 1) 71%,
+          rgba(35, 87, 108, 1) 88%
+        );
+      "
+    >
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1" style="font-size: 50px; font-family: monoton; color: white"
+          >Emotisong</span
+        >
+      </div>
+    </nav>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col col-9" style="margin-top: 20px; margin-bottom: 20px">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="font-size: 40px; font-family: spectral;">
+                Discover Music That Will Boost Your Algorithm with Emotisong
+                Rating App!
+              </h5>
+              <br />
+              <p class="card-text">
+                Emotisong is a music rating app that allows users to rate songs
+                on a scale of 1-5 based on their personal preferences. Whether
+                you love a song or find it unbearable, Emotisong provides a
+                platform for you to share your opinion with the world. With a
+                sleek and user-friendly interface, you can easily search for
+                your favorite songs and rate them with just a few taps.
+              </p>
+
+              <p>
+                But that’s not all! Emotisong also helps influencers and
+                retailers find songs to use on social media posts to boost their
+                algorithm. With our advanced search filters, you can find songs
+                that match your brand’s vibe and style, and create content that
+                resonates with your audience.
+              </p>
+
+              <p>
+                You can also browse through other users’ ratings and discover
+                new music that matches your taste. So, what are you waiting for?
+                Whether you’re a music lover looking for your next favorite
+                song, or an influencer or retailer looking to boost your social
+                media presence, Emotisong has got you covered. Signup for
+                Emotisong today and start rating your favorite tunes!
+              </p>
+              <p>
+                <a href="./signup.html" style="font-size: 25px; font-style: italic; font-weight: bolder;"
+                  >Signup for Emotisong today and start rating your favorite
+                  tunes!
+                </a>
+              </p>
+            </div>
+            <img
+              src="./images/lee-campbell-GI6L2pkiZgQ-unsplash.jpg"
+              class="card-img-bottom"
+              style="height: 30rem"
+              alt="..."
+            />
+          </div>
+        </div>
+        <div
+          class="col"
+          style="
+            margin-top: 20px;
+            border: solid #865d34;
+            border-radius: 25px;
+            background-color: #865d34;
+            height: fit-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+          "
+        >
+          <form class="row g-3">
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label">
+                Please Enter Your Email:</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail4"
+                placeholder="Email"
+              />
+            </div>
+            <div class="col-12">
+              <label for="inputPassword4" class="form-label">
+                Please Enter Your Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword4"
+                placeholder="Password"
+              />
+            </div>
+            <!--removed username for now until we know how the user will chose one and where it will appear-->
+            <!-- <div class="col-12">
+                  <label for="inputUsername" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                </div> -->
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-sm">
+                Login
+              </button>
+              <!-- <button type="button" class="btn btn-secondary btn-sm">Sign Up</button> -->
+            </div>
+          </form>
+          <!-- <form>
+            <input type="text" name="email" />
+            <input type=" password" name="password" />
+          </form> -->
+
+          <script>
+            function submitSignup(){
+                const query = await fetch("/api/user/signup", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    }),
+                    headers: {
+                        "Content-Type": "application.json"
+                    }
+                })
+                const result = await query.json()
+                if ( result.status === "succeess"{
+                    //....
+                })
+
+            };
+          </script>
+        </div>
+      </div>
+    </div>
+    <footer class="navbar bg-body-tertiary">
+      <div
+        class="container-fluid"
+        style="
+          background-color: #865d34;
+          font-weight: bolder;
+          font-style: italic;
+          padding: 5px, 5px, 5px, 5px;
+          margin: 5px;
+        "
+      >
+        <!-- <h6>Made by Veronica Perez</h6> -->
+        <p>Made by Group Two &copy; 2023 Bootcamp</p>
+      </div>
+    </footer>
+  </body>
 </html>
