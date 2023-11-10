@@ -55,5 +55,23 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+const regenToken = async()=>{
+  if(!token){
+      return;
+  }
+  console.log(token);
+  const mainTokenExp = api.decode(token).exp;
+  if(mainTokenExp <= Date.now()/1000){
+      //main token has expired
+      const newToken = await axios.post("http://localhost:5000/api/user/token", {
+          token:reToken,
+      })
+      token = newToken.data.accessToken;
+      console.log(token)
+      localStorage.setItem("accessToken", token);
+  }
+}
+
+let intrId = setInterval(regenToken, 55(60*1000));
 
 module.exports = router;
