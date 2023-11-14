@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../../models/User");
 
-//get all records
+//get all users
 router.get("/", async (req, res) => {
   try {
     const payload = await User.findAll();
@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message });
   }
 });
-//get one record by pk
+//get one user by pk
 router.get("/:id", async (req, res) => {
   try {
     const payload = await User.findByPk(req.params.id);
@@ -19,7 +19,7 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message });
   }
 });
-//create a new record
+//create a new user
 router.post("/", async (req, res) => {
   try {
     const payload = await User.create(req.body);
@@ -28,50 +28,54 @@ router.post("/", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message });
   }
 });
-//update a record
-router.put("/:id", async (req, res) => {
+
+//login user
+router.post('/login', async (req, res) => {
   try {
-    const payload = await User.update(req.body, {
+    const dbUserData = await User.findOne({
       where: {
-        id: req.params.id,
+        email: req.body.email,
       },
     });
-    res.status(200).json({ status: "success", payload });
+
+    if (!dbUserData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password. Please try again!' });
+      return;
+    }
+
+    const validPassword = await dbUserData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password. Please try again!' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res
+        .status(200)
+        .json({ user: dbUserData, message: 'You are now logged in!' });
+    });
   } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message });
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
-router.delete("/:id", async (req, res) => {
-  try {
-    const payload = await User.destroy({
-      where: {
-        id: req.params.id,
-      },
+//logout user
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
     });
-    res.status(200).json({ status: "success", payload });
-  } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message });
+  } else {
+    res.status(404).end();
   }
 });
-
-// const regenToken = async()=>{
-//   if(!token){
-//       return;
-//   }
-//   console.log(token);
-//   const mainTokenExp = api.decode(token).exp;
-//   if(mainTokenExp <= Date.now()/1000){
-//       //main token has expired
-//       const newToken = await axios.post("http://localhost:5000/api/user/token", {
-//           token:reToken,
-//       })
-//       token = newToken.data.accessToken;
-//       console.log(token)
-//       localStorage.setItem("accessToken", token);
-//   }
-// }
-
-// let intrId = setInterval(regenToken, 55(60*1000));
 
 module.exports = router;

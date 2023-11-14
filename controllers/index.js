@@ -5,15 +5,17 @@ const userApiRoutes = require("./api/user.api.routes");
 const songApiRoutes = require("./api/song.api.routes");
 const ratingApiRoutes = require("./api/rating.api.routes");
 
-//import all html files here
-const userHtmlRoutes = require("./html/user.html.routes");
+//html handlebars routes
+const homeRoutes = require('./home-routes.js');
+
+
 
 //add api routes to the router
 router.use("/api/user", userApiRoutes);
 router.use("/api/song", songApiRoutes);
 router.use("/api/rating", ratingApiRoutes);
 
-//add html routes to the router
-router.use("/user", userHtmlRoutes);
+//html handlebars router
+router.use('/', homeRoutes);
 
 module.exports = router;
