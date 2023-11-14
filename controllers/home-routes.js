@@ -3,6 +3,8 @@ const { Genre, Song } = require('../models');
 
 // GET all genres for homepage
 router.get('/', async (req, res) => {
+  
+  //pulls genre data from the api
   try {
     const dbGenreData = await Genre.findAll({
       include: [
