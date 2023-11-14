@@ -95,4 +95,9 @@ router.get('/info', (req, res) =>{
   res.render('information');
 });
 
+router.get('/rating', (req, res) =>{
+  
+  res.render('songrating');
+});
+
 module.exports = router;
