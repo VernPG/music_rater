@@ -1,8 +1,7 @@
 // .env in the config folder can be deleted once the folder has been deployed to Heroku
 require("dotenv").config();
-const APIKEY = process.env.APIKEY;
-
-const requestUrl = `https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=rock&api_key=${APIKEY}&format=json&limit=1000`
+const PORT = process.env.PORT
+const requestUrl = `https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=rock&api_key=${process.env.APIKEY}&format=json&limit=1000`
 
 
 function getRandomNumber(min, max) { // min and max included 
