@@ -12,7 +12,7 @@ Rating.init(
       autoIncrement: true,
     },
     rating: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     timesrated:{

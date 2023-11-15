@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Genre, Song } = require('../models');
+const { Genre, Song, Rating } = require('../models');
 const songPull = require('../utils/apiconnection');
 
 // GET all genres for homepage
@@ -100,6 +100,35 @@ router.get('/rating', async (req, res) =>{
   const genreSelect = await Genre.findByPk(choice)
   res.render('songrating', {genreSelect, newSong, loggedIn: req.session.loggedIn});
 });
+
+router.get('/topsongs', async(req, res) =>{
+  const ratinglist = await Rating.findAll({
+    include: [
+      {
+        model: Song,
+        as: 'SongRating',
+        attritbues: [
+          'id',
+          'rating',
+          'song',
+          'artist',
+          'link'
+        ]
+
+      }
+    ],
+    order:[
+      ['rating', 'DESC']
+    ]
+    
+  })
+  res.render('topsongs', {ratinglist})
+})
+
+
+
+
+
 
 module.exports = router;
 

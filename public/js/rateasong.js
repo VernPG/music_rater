@@ -1,24 +1,3 @@
-// const loginFormHandler = async (event) => {
-//   event.preventDefault();
-
-//   const email = document.querySelector('#email-login').value.trim();
-//   const password = document.querySelector('#password-login').value.trim();
-
-//   if (email && password) {
-//     const response = await fetch('/api/user/login', {
-//       method: 'POST',
-//       body: JSON.stringify({ email, password }),
-//       headers: { 'Content-Type': 'application/json' },
-//     });
-
-//     if (response.ok) {
-//       document.location.replace('/');
-//     } else {
-//       alert('Failed to log in.');
-//     }
-//   }
-// };
-
 const rateSelect = document.getElementById('rate-select')
 
 rateSelect.addEventListener('click', async (event) => {
@@ -29,25 +8,40 @@ rateSelect.addEventListener('click', async (event) => {
   var song = document.querySelector('#songname').textContent
   var artist = document.querySelector('#songartist').textContent
   var link = document.querySelector('#songlink').textContent
+   const doesexist = await fetch(`/api/song/name/${song}`,{
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  console.log (doesexist.status)
+  if (doesexist.status == 500)
+  {
+    if (song && artist && link && ratechoice) {
+      const response = await fetch('/api/song/rating', {
+        method: 'POST',
+        body: JSON.stringify({song, artist, link, ratechoice}),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-  console.log (song)
-  console.log (artist)
-  console.log (link)
-  console.log (ratechoice)
+      if (response.ok) {
+        document.location.replace('/rating');
+      } else {
+        alert('Failed to rate song.');
+      }
+    }
+  }else
+  {
+    if (song && artist && link && ratechoice) {
+      const response = await fetch(`/api/song/rating/${song}`, {
+        method: 'PUT',
+        body: JSON.stringify({ratechoice}),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-  if (song && artist && link && ratechoice) {
-    const response = await fetch('/api/song/rating', {
-      method: 'POST',
-      body: JSON.stringify({song, artist, link, ratechoice}),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      document.location.replace('/rating');
-    } else {
-      alert('Failed to rate song.');
+      if (response.ok) {
+        document.location.replace('/rating');
+      } else {
+        alert('Failed to rate song.');
+      }
     }
   }
-
-
 })

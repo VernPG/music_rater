@@ -24,7 +24,7 @@ GenreTags.init(
         model: 'song',
         key: 'id'
       },
-    }
+    },
   },
   {
     sequelize,
