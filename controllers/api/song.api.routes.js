@@ -75,7 +75,7 @@ router.put("/rating/:id", async (req, res) => {
     const currentTimesrated = payload2[0].dataValues.timesrated
     const timesratedMath = currentTimesrated+1
     const userRating = Number(req.body.ratechoice)
-    const ratingMath = Number(((currentRating*currentTimesrated)+userRating)/(timesratedMath))
+    const ratingMath = Math.round(Number(((currentRating*currentTimesrated)+userRating)/(timesratedMath))*10)/10 
     Rating.update(
       {
         rating: ratingMath,
