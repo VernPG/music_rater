@@ -128,6 +128,11 @@ img {
   margin-top: 50px;
   max-width: 750px;
   min-width: 550px;
+  background-image: url(../images/viktor-forgacs-B88PgQXS4qg-unsplash.jpg);
+  background-size:cover ;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bolder;
   /* display: inline-block; */
   /* margin: 0 0 20px 0;
   flex: 0 0 50%;
