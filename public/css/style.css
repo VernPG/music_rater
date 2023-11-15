@@ -160,14 +160,20 @@ img {
 .card-body {
   text-align: center;
   font-weight: bold;
+  font-size: 1.4rem;
+
+  
+}
+.top-songs{
+  text-align: center;
+  font-weight: bold;
   background-color: #865d34;
   font-family: monoton;
   font-size: 100px;
   background-image: url(../images/viktor-forgacs-B88PgQXS4qg-unsplash.jpg);
   background-size: contain;
-  
-}
 
+}
 .gallery-name {
   text-transform: uppercase;
   letter-spacing: 3px;
