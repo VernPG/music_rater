@@ -4,6 +4,8 @@ const songPull = require('../utils/apiconnection');
 
 // GET all genres for homepage
 router.get('/', async (req, res) => {
+  
+  //pulls genre data from the api
   try {
     const dbGenreData = await Genre.findAll({
       include: [
