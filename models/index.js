@@ -4,24 +4,25 @@ const User = require('./User');
 const Genre = require('./Genre');
 const GenreTags = require('./GenreTags')
 
-User.belongsToMany(Song, {
+Rating.belongsToMany(Song, {
   through: {
-    model: Rating,
+    model: GenreTags,
     unique: false
   },
-  as: 'UserSong',
+  as: 'RatingSong',
   foreignKey:{
-    name: 'user_id',
+    name: 'rating_id',
     allowNull:false
   }
 })
 
-Song.belongsToMany(User, {
+
+Song.belongsToMany(Rating, {
   through: {
-    model: Rating,
+    model: GenreTags,
     unique: false
   },
-  as: 'SongUser',
+  as: 'SongRating',
   foreignKey:{
     name: 'song_id',
     allowNull:false

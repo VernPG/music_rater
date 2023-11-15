@@ -24,7 +24,14 @@ GenreTags.init(
         model: 'song',
         key: 'id'
       },
-    }
+    },
+    rating_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'rating',
+        key: 'id'
+      },
+    },
   },
   {
     sequelize,

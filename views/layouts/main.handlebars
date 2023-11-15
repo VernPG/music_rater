@@ -57,33 +57,38 @@
           rgba(40, 107, 135, 1) 71%,
           rgba(35, 87, 108, 1) 88%
         );
-      ">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1" style="font-size: 50px; font-family: monoton; color: white">Emotisong</span>
-    </div>
-    <div class="collapse navbar-collapse d-flex justify-content-end" style="font-size: 25px; color: white;">
-      <a href="/">Rate a Genre</a>
-      <a href="/rating">Song Rating</a>
-      <a href="/info">About Us</a>
-      {{#if loggedIn}}
-      <button id="logout" class="btn-no-style">Logout</button>
-      {{else}}
-      <a href="/login">Login</a>
-      {{/if}}
-    </div>
+      "
+    >
+      <div class="container-fluid">
+        <span
+          class="navbar-brand mb-0 h1"
+          style="font-size: 50px; font-family: monoton; color: white"
+        >Emotisong</span>
+      </div>
+      <div class="collapse navbar-collapse d-flex justify-content-end" style="font-size: 25px; color: white;">
+        <a href="/">Rate a Genre</a>
+        <a href="/rating">Song Rating</a>
+        <a href="/topsongs">Top Songs</a>
+        <a href="/info">About Us</a>
+        {{#if loggedIn}}
+          <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
+      </div>
 
-  </nav>
-  <main>
-    {{! <aside>
-      <h2>Rate Some Songs!</h2>
-    </aside> }}
-    <div class="rate">
-      {{{body}}}
-    </div>
-  </main>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
+    </nav>
+    <main>
+     
+      <div class="justify-content-center mx-auto rate">
+        {{{body}}}
+      </div>
+    </main>
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+
+
+  </body>
 
 </html>
