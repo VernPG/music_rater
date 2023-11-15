@@ -142,7 +142,10 @@ router.get('/topsongs', async(req, res) =>{
 
 })
 
-
+router.get('/genreselect', (req, res) =>{
+  
+  res.render('genreselect');
+});
 
 
 
