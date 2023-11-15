@@ -146,10 +146,7 @@ router.get('/genreselect', (req, res) =>{
   res.render('genreselect');
 });
 
-router.get('*', (req, res) =>{
-  res.render('404')
 
-});
 
 
 module.exports = router;
