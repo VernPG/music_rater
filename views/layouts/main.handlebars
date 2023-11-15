@@ -60,15 +60,14 @@
       "
     >
       <div class="container-fluid">
-        <span
-          class="navbar-brand mb-0 h1"
-          style="font-size: 50px; font-family: monoton; color: white"
-        >Emotisong</span>
+        <span id="brand" class="navbar-brand mb-0 h1" style="font-size: 50px; font-family: monoton; color: white"
+        ><a href="/">Emotisong</a></span>
       </div>
+
       <div class="collapse navbar-collapse d-flex justify-content-end" style="font-size: 25px; color: white;">
         <a href="/genreselect">Rate a Genre</a>
         <a href="/topsongs">Top Songs</a>
-        <a href="/info">About Us</a>
+        {{!-- <a href="/info">About Us</a> --}}
         {{#if loggedIn}}
           <button id="logout" class="btn-no-style">Logout</button>
         {{else}}
