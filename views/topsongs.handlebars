@@ -1,20 +1,9 @@
 
 
 <section class="container">
-  <h3 class="RatingSong">TOP SONGS</h3>
   <section class="flex-row justify-center">
     {{#each topsongs}}
     {{> rating-details}}
     {{/each}} 
   </section>
 </section>
-
-
-{{!-- <section class="container">
-  <h3 class="GenreSong">{{genre.genre_name}}</h3>
-  <section class="flex-row justify-center">
-    {{#each genre.GenreSong as |song|}}
-    {{> song-details}}
-    {{/each}} 
-  </section>
-</section> --}}

@@ -18,4 +18,9 @@ router.use("/api/rating", ratingApiRoutes);
 //html handlebars router
 router.use('/', homeRoutes);
 
+router.get('*', (req, res) =>{
+  res.render('404')
+
+});
+
 module.exports = router;

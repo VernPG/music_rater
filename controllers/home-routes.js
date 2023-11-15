@@ -132,9 +132,6 @@ router.get('/topsongs', async(req, res) =>{
       const topsongs = ratinglist.map((topsongs) =>
       topsongs.get({ plain: true })
       );      
-      console.log (topsongs)
-      console.log (topsongs[1].RatingSong )  
-      console.log (topsongs[1].RatingSong[0].song)
       res.render('topsongs', { topsongs, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
@@ -149,7 +146,10 @@ router.get('/genreselect', (req, res) =>{
   res.render('genreselect');
 });
 
+router.get('*', (req, res) =>{
+  res.render('404')
 
+});
 
 
 module.exports = router;
