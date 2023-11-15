@@ -12,6 +12,10 @@ Rating.init(
       autoIncrement: true,
     },
     rating: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    timesrated:{
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -22,13 +26,6 @@ Rating.init(
         key: 'id'
       },
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      },
-    }
   },
   {
     sequelize,

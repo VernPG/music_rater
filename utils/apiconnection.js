@@ -14,11 +14,10 @@ async function getRockSong() {
   const result = await fetch(requestRockUrl)
   const data = await result.json()
 
-  console.log(data)
 
   const random = getRandomNumber(0, 999);
   const randomSong = data.tracks.track[random]
-  console.log(randomSong)
+  // console.log(randomSong)
   return randomSong;
 }
 
@@ -26,7 +25,7 @@ async function get90sSong() {
   const result = await fetch(request90sUrl)
   const data = await result.json()
 
-  console.log(data)
+
 
   const random = getRandomNumber(0, 999);
   const randomSong = data.tracks.track[random]
@@ -37,7 +36,7 @@ async function getDiscoSong() {
   const result = await fetch(requestDiscoUrl)
   const data = await result.json()
 
-  console.log(data)
+
 
   const random = getRandomNumber(0, 999);
   const randomSong = data.tracks.track[random]
@@ -47,4 +46,3 @@ async function getDiscoSong() {
 //exports getSong function
 module.exports = {getRockSong, get90sSong, getDiscoSong} 
 // get this page to do something with the information...
-getRockSong()

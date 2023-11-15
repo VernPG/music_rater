@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Genre, Song } = require('../models');
+const { Genre, Song, Rating } = require('../models');
+const songPull = require('../utils/apiconnection');
 
 // GET all genres for homepage
 router.get('/', async (req, res) => {
@@ -93,9 +94,58 @@ router.get('/info', (req, res) =>{
   res.render('information');
 });
 
-router.get('/rating', (req, res) =>{
-  
-  res.render('songrating');
+router.get('/rating', async (req, res) =>{
+  const choice = 1
+  const newSong = await songPull.getRockSong();
+  const genreSelect = await Genre.findByPk(choice)
+  res.render('songrating', {genreSelect, newSong, loggedIn: req.session.loggedIn});
 });
 
+router.get('/topsongs', async(req, res) =>{
+
+
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  } else {
+    // If the user is logged in, allow them to view the genre
+    try {
+      const ratinglist = await Rating.findAll({
+        include: [
+          {
+            model: Song,
+            as: 'RatingSong',
+            attributes: [
+              'id',
+              'song',
+              'artist',
+              'link'
+            ],
+          },
+        ],
+              order:[
+                ['rating', 'DESC']
+              ]
+      });
+
+      const topsongs = ratinglist.map((topsongs) =>
+      topsongs.get({ plain: true })
+      );      
+      console.log (topsongs)
+      console.log (topsongs[1].RatingSong )  
+      console.log (topsongs[1].RatingSong[0].song)
+      res.render('topsongs', { topsongs, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+
+})
+
+
+
+
+
+
 module.exports = router;
+

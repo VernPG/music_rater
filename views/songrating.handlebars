@@ -1,23 +1,41 @@
-      <div class="container" style="display: block; margin-top: 60px;font-weight: 900; font-size: x-large; border-color: #5d4b22;">
-        <div class="row">
-            <p class="d-inline-flex gap-2">
-                <button type="button" class="btn btn-light fa-solid fa-microphone-slash"  value="1" data-bs-toggle="button" style="color: blue">1! Shut it down</button>
-                <button type="button" class="btn btn-light fa-solid fa-poo" value="2" style="color: #5d4b22" data-bs-toggle="button">2! it's Poo</button>
-                <button type="button" class="btn btn-light fa-solid fa-heart-crack" value="3" style="color: rgb(229, 82, 106)" data-bs-toggle="button">3! It's not for me</button>
-                <button type="button" class="btn btn-light fa-solid fa-face-rolling-eyes" value="4" style="color: yellowgreen" data-bs-toggle="button">4! Bores</button>
-                <button type="button" class="btn btn-light fa-solid fa-face-meh" value="5" style="color: green" data-bs-toggle="button">5! It's alright</button>
-                <button type="button" class="btn btn-light fa-solid fa-face-smile" value="6" style="color: gold" data-bs-toggle="button">6! In the mix</button>
-                <button type="button" class="btn btn-light fa-solid fa-heart" value="7" style="color: purple" data-bs-toggle="button">7! Lovin</button>
-                <button type="button" class="btn btn-light fa-solid fa-face-grin-hearts" value="8" style="color: #f568eb;" data-bs-toggle="button">8! Love no hate</button>
-                <button type="button" class="btn btn-light fa-solid fa-fire" value="9" style="color: orangered" data-bs-toggle="button">9! So Divine</button>
-                <button type="button" class="btn btn-light fa-solid fa-repeat" value="10" style="color: #5d4b22" data-bs-toggle="button">10! repeating</button>
-                {{!-- <p>
-                    Average Rating:<p id="demo"></p>
 
-                </p> --}}
-                </p>
-    
-          
-    
-        </div>
-    </div> 
+  <div class="login-card col-lg-12 justify-content-center mx-auto">
+    <form class="form music-select ">
+      <div class="form-group">
+      <h1><label id="songname" for="songname">{{newSong.name}}</label></h1>
+      </div>
+      <div class="form-group">
+        By:<label id="songartist" for="songartist">{{newSong.artist.name}}</label>
+      </div>
+      <div class="form-group">
+       Listen at: <a target="_blank" href="{{newSong.url}}"><label id="songlink" for="songlink">{{newSong.url}}</label></a>
+      </div>
+      <div class="form-group">
+        Rate This<label id="songgenre" for="songgenre">{{genreSelect.dataValues.genre_name}}</label> Song Below!
+      </div>
+      
+    </form>
+  </div>
+
+<div class="container" style="display: block; margin-top: 60px;font-weight: 900; font-size: x-large; border-color: #5d4b22;"></div>
+    <div id="rate-select" class="row rate-select">
+        <p class="d-inline-flex gap-2">
+        <button type="button" class="btn btn-light fa-solid fa-microphone-slash"  value="1" data-bs-toggle="button" style="color: blue">1! Shut it down</button>
+        <button type="button" class="btn btn-light fa-solid fa-poo" value="2" style="color: #5d4b22" data-bs-toggle="button">2! it's Poo</button>
+        <button type="button" class="btn btn-light fa-solid fa-heart-crack" value="3" style="color: rgb(229, 82, 106)" data-bs-toggle="button">3! It's not for me</button>
+        <button type="button" class="btn btn-light fa-solid fa-face-rolling-eyes" value="4" style="color: yellowgreen" data-bs-toggle="button">4! Bores</button>
+        <button type="button" class="btn btn-light fa-solid fa-face-meh" value="5" style="color: green" data-bs-toggle="button">5! It's alright</button>
+        <button type="button" class="btn btn-light fa-solid fa-face-smile" value="6" style="color: gold" data-bs-toggle="button">6! In the mix</button>
+        <button type="button" class="btn btn-light fa-solid fa-heart" value="7" style="color: purple" data-bs-toggle="button">7! Lovin</button>
+        <button type="button" class="btn btn-light fa-solid fa-face-grin-hearts" value="8" style="color: #f568eb;" data-bs-toggle="button">8! Love no hate</button>
+        <button type="button" class="btn btn-light fa-solid fa-fire" value="9" style="color: orangered" data-bs-toggle="button">9! So Divine</button>
+        <button type="button" class="btn btn-light fa-solid fa-repeat" value="10" style="color: #5d4b22" data-bs-toggle="button">10! repeating</button>
+        {{!-- <p>
+            Average Rating:<p id="demo"></p>
+
+        </p> --}}
+        </p>
+    </div>
+</div> 
+
+<script src="/js/rateasong.js"></script>

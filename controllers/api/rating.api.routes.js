@@ -42,6 +42,30 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.get('/score/:id', async (req, res) => {
+  try {
+    const dbGenreData = await Genre.findAll({
+      include: [
+        {
+          model: Song,
+          as: 'GenreSong',
 
+        },
+      ],
+    });
+
+    const genres = dbGenreData.map((genre) =>
+      genre.get({ plain: true })
+    );
+
+    res.render('homepage', {
+      genres,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
