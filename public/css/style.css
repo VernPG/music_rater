@@ -121,6 +121,7 @@ img {
   border-radius:25px; 
   background-color: #865d34; 
   height: fit-content; 
+  width: fit-content;
   padding-top: 10px; 
   padding-bottom: 10px; 
   color: white;
@@ -131,7 +132,7 @@ img {
   background-image: url(../images/viktor-forgacs-B88PgQXS4qg-unsplash.jpg);
   background-size:cover ;
   text-align: center;
-  font-size: xx-large;
+  font-size: larger;
   font-weight: bolder;
   /* display: inline-block; */
   /* margin: 0 0 20px 0;
@@ -174,7 +175,7 @@ img {
 }
 
 /* LAYOUT */
-.container {
+/* .container {
   display: flex;
   flex-flow: column wrap;
   align-content: flex-start;
@@ -182,4 +183,4 @@ img {
   background-image:
   url("./images/belinda-fewings-68HrHtqdiPE-unsplash.jpg");
 background-size: cover;
-}
+} */
