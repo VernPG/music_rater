@@ -20,7 +20,7 @@ router.post("/name/:id", async (req, res) => {
         song: req.params.id
       }
     });
-    const songID = payload[0].dataValues.id
+    const songID = payload?.[0]?.dataValues?.id || "Notfound"
     res.status(200).json({ status: "success", songID })
   } catch (err) {
     res.status(500).json({ status: "error", payload: err.message });
@@ -40,13 +40,15 @@ router.get("/:id", async (req, res) => {
 //create a new record
 router.post("/rating", async (req, res) => {
   try {
+    const genreID = 1
     const addSong = {'song': req.body.song, 'artist': req.body.artist, 'link': req.body.link}
     const payload = await Song.create(addSong);
     const songID = payload.dataValues.id
-    const addGenreTag = {'genre_id': 1, 'song_id': songID}
-    const payload2 = await GenreTags.create(addGenreTag)
     const addRating = {'rating': req.body.ratechoice, 'timesrated': 1, 'song_id': songID}
     const payload3 = await Rating.create(addRating)
+    const addGenreTag = {'genre_id': genreID, 'song_id': songID, 'rating_id': payload3.dataValues.id}
+    const payload2 = await GenreTags.create(addGenreTag)
+
     res.status(200).json({ status: "success", payload });
   } catch (err) {
     res.status(500).json({ status: "error", payload: err.message });

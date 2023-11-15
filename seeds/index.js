@@ -12,8 +12,8 @@ const seedAll = async () => {
   await genreData();
   await songData();
   await usersData();
-  await genretagsData();
   await ratingData();
+  await genretagsData();
 
   process.exit(0);
 };

@@ -102,27 +102,44 @@ router.get('/rating', async (req, res) =>{
 });
 
 router.get('/topsongs', async(req, res) =>{
-  const ratinglist = await Rating.findAll({
-    include: [
-      {
-        model: Song,
-        as: 'SongRating',
-        attritbues: [
-          'id',
-          'rating',
-          'song',
-          'artist',
-          'link'
-        ]
 
-      }
-    ],
-    order:[
-      ['rating', 'DESC']
-    ]
-    
-  })
-  res.render('topsongs', {ratinglist})
+
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  } else {
+    // If the user is logged in, allow them to view the genre
+    try {
+      const ratinglist = await Rating.findAll({
+        include: [
+          {
+            model: Song,
+            as: 'RatingSong',
+            attributes: [
+              'id',
+              'song',
+              'artist',
+              'link'
+            ],
+          },
+        ],
+              order:[
+                ['rating', 'DESC']
+              ]
+      });
+
+      const topsongs = ratinglist.map((topsongs) =>
+      topsongs.get({ plain: true })
+      );      
+      console.log (topsongs)
+      console.log (topsongs[1].RatingSong )  
+      console.log (topsongs[1].RatingSong[0].song)
+      res.render('topsongs', { topsongs, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+
 })
 
 

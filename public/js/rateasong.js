@@ -12,8 +12,8 @@ rateSelect.addEventListener('click', async (event) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
-  console.log (doesexist.status)
-  if (doesexist.status == 500)
+  const finalData = await doesexist.json()
+  if (finalData.songID === "Notfound")
   {
     if (song && artist && link && ratechoice) {
       const response = await fetch('/api/song/rating', {
