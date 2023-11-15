@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: spectral;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ a {
 }
 
 a:visited {
-  color: inherit;
+  color: white;
 }
 
 header {
@@ -110,8 +110,8 @@ img {
   flex: 0 1 300px;
   border: 7px double var(--dark);
   border-radius: 10px;
-  background-color: var(--light);
-  color: var(--dark);
+  background-color: #23576c;
+  color: white;
 }
 
 .login-card {
@@ -127,12 +127,12 @@ img {
   color: white;
   position: relative;
   margin-top: 50px;
-  max-width: 750px;
-  min-width: 550px;
+  /* max-width: 750px;
+  min-width: 550px; */
   background-image: url(../images/viktor-forgacs-B88PgQXS4qg-unsplash.jpg);
   background-size:cover ;
   text-align: center;
-  font-size: larger;
+  font-size:x-large;
   font-weight: bolder;
   /* display: inline-block; */
   /* margin: 0 0 20px 0;
@@ -148,19 +148,24 @@ img {
 }
 
 .card header {
-  color: var(--light);
+  color: white;
   font-weight: bold;
   text-transform: uppercase;
   margin: 0;
-  background-color: var(--tertiary);
+  background-color: #23576c;
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
 .card-body {
-  font-size: 1.4rem;
   text-align: center;
   font-weight: bold;
+  background-color: #865d34;
+  font-family: monoton;
+  font-size: 100px;
+  background-image: url(../images/viktor-forgacs-B88PgQXS4qg-unsplash.jpg);
+  background-size: contain;
+  
 }
 
 .gallery-name {
