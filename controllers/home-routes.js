@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Genre, Song } = require('../models');
+const songPull = require('../utils/apiconnection');
 
 // GET all genres for homepage
 router.get('/', async (req, res) => {
@@ -93,9 +94,12 @@ router.get('/info', (req, res) =>{
   res.render('information');
 });
 
-router.get('/rating', (req, res) =>{
-  
-  res.render('songrating');
+router.get('/rating', async (req, res) =>{
+  const choice = 1
+  const newSong = await songPull.getRockSong();
+  const genreSelect = await Genre.findByPk(choice)
+  res.render('songrating', {genreSelect, newSong, loggedIn: req.session.loggedIn});
 });
 
 module.exports = router;
+
