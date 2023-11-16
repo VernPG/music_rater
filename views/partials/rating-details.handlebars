@@ -1,9 +1,10 @@
 <section class="card">
   <a href="/song/{{id}}">
+  <header>
     {{#each RatingSong as |song|}}
-    <header>{{song.song}}</header>
+      {{>song-name}}
     {{/each}} 
-
+</header>
     <div class="card-body top-songs" style="color: white;">
       <p style="font-size:100px">{{rating}}</p>
     </div>
