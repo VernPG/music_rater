@@ -37,6 +37,6 @@ The following video shows an example of the application being used from the comm
 [Github Link](https://github.com/VernPG/music_rater.git)
 [Deployed Link On Heroku](https://emotisong-music-rater-cd144b6f7aad.herokuapp.com/)
 
-![homepage image](./public/css/images/homepage.png)
+![homepage image](./public/images/homepage.png)
 
 
