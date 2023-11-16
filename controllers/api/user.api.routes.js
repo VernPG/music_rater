@@ -1,24 +1,6 @@
 const router = require("express").Router();
 const User = require("../../models/User");
 
-//get all users
-router.get("/", async (req, res) => {
-  try {
-    const payload = await User.findAll();
-    res.status(200).json({ status: "success", payload });
-  } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message });
-  }
-});
-//get one user by pk
-router.get("/:id", async (req, res) => {
-  try {
-    const payload = await User.findByPk(req.params.id);
-    res.status(200).json({ status: "success", payload });
-  } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message });
-  }
-});
 //create a new user
 router.post("/", async (req, res) => {
   try {

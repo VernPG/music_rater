@@ -3,16 +3,6 @@ const Song = require("../../models/Song");
 const Rating = require("../../models/Rating")
 const GenreTags = require("../../models/GenreTags")
 
-//get all records
-router.get("/", async (req, res) => {
-  try {
-    const payload = await Song.findAll();
-    res.status(200).json({ status: "success", payload })
-  } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message });
-  }
-});
-
 router.post("/name/:id", async (req, res) => {
   try {
     const payload = await Song.findAll({
@@ -39,6 +29,10 @@ router.get("/:id", async (req, res) => {
 
 //create a new record
 router.post("/rating", async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  }
+  else{
   try {
     const genreID = 1
     const addSong = {'song': req.body.song, 'artist': req.body.artist, 'link': req.body.link}
@@ -53,10 +47,14 @@ router.post("/rating", async (req, res) => {
   } catch (err) {
     res.status(500).json({ status: "error", payload: err.message });
   }
-
+  }
 });
 
 router.put("/rating/:id", async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  }
+  else{
   try {
     const payload = await Song.findAll({
       where: {
@@ -91,7 +89,7 @@ router.put("/rating/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json({ status: "error", payload2: err.message });
   }
-
+  }
 });
 
 module.exports = router;
