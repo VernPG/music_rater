@@ -97,10 +97,14 @@ router.get('/info', (req, res) =>{
 });
 
 router.get('/rating', async (req, res) =>{
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  } else {
   const choice = 1
   const newSong = await songPull.getRockSong();
   const genreSelect = await Genre.findByPk(choice)
   res.render('songrating', {genreSelect, newSong, loggedIn: req.session.loggedIn});
+  }
 });
 
 router.get('/topsongs', async(req, res) =>{
@@ -124,9 +128,10 @@ router.get('/topsongs', async(req, res) =>{
             ],
           },
         ],
-              order:[
-                ['rating', 'DESC']
-              ]
+        order:[
+          ['rating', 'DESC']
+        ],
+        limit:15
       });
 
       const topsongs = ratinglist.map((topsongs) =>
@@ -142,8 +147,11 @@ router.get('/topsongs', async(req, res) =>{
 })
 
 router.get('/genreselect', (req, res) =>{
-  
-  res.render('genreselect');
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  } else {
+  res.render('genreselect', {loggedIn: req.session.loggedIn });
+  }
 });
 
 
