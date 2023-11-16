@@ -13,7 +13,7 @@ router.post("/name/:id", async (req, res) => {
     const songID = payload?.[0]?.dataValues?.id || "Notfound"
     res.status(200).json({ status: "success", songID })
   } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message });
+    res.status(500).json({ status: "error"});
   }
 });
 
