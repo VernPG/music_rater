@@ -119,7 +119,7 @@ router.get('/topsongs', async(req, res) =>{
         include: [
           {
             model: Song,
-            as: 'RatingSong',
+            as: 'ratingsong',
             attributes: [
               'id',
               'song',

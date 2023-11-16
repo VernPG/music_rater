@@ -9,7 +9,7 @@ Rating.belongsToMany(Song, {
     model: GenreTags,
     unique: false
   },
-  as: 'RatingSong',
+  as: 'ratingsong',
   foreignKey:{
     name: 'rating_id',
     allowNull:false
