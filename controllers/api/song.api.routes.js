@@ -13,10 +13,11 @@ router.post("/name/:id", async (req, res) => {
     const songID = payload?.[0]?.dataValues?.id || "Notfound"
     res.status(200).json({ status: "success", songID })
   } catch (err) {
-    res.status(500).json({ status: "error"});
+    //trying to make it acceptable that it can't find the record.
+    res.status(200)
   }
 });
-
+// json({ status: "error"});
 //get one record by pk
 router.get("/:id", async (req, res) => {
   try {
