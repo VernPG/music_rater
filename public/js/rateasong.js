@@ -19,14 +19,10 @@ rateSelect.addEventListener('click', async (event) => {
       const response = await fetch('/api/song/rating', {
         method: 'POST',
         body: JSON.stringify({song, artist, link, ratechoice}),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },  
       });
+      document.location.replace('/rating');
 
-      if (response.ok) {
-        document.location.replace('/rating');
-      } else {
-        alert('Failed to rate song.');
-      }
     }
   }else
   {
